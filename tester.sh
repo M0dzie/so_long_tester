@@ -44,36 +44,36 @@ printf "${YELLOW}\n\nTest nº$i :	wall split map in two\n./so_long maps/unfinish
 
 printf "${BLUE}\n\n\n#####		TEST LEAKS		#####\n\n${NOCOLOR}"
 i=1
-printf "Test leaks nº$i :	no arguments\n./so_long\n${NOCOLOR}"; ((i=i+1)); leaks -atExit -- $DIR_PROG | grep "leaks for"
+printf "Test leaks nº$i :	no arguments\n./so_long\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG | grep "ERROR SUMMARY"
 
 printf "${BLUE}\n\n\n#####		TEST Extensions		#####${NOCOLOR}"
 i=1
-printf "${YELLOW}\n\nTest nº$i : 	no extension\n./so_long map\n\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG map | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i : 	uncomplete\n./so_long map.\n\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG map. | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i : 	uncomplete\n./so_long map.b\n\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG map.b | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i : 	uncomplete\n./so_long map.be\n\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG map.be | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i : 	too long\n./so_long map.berr\n\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG map.berr | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i : 	too short\n./so_long .ber\n\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG .ber | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i : 	with folder\n./so_long /.ber\n\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG /.ber | grep "leaks for"
+printf "${YELLOW}\n\nTest nº$i : 	no extension\n./so_long map\n\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG map | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i : 	uncomplete\n./so_long map.\n\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG map. | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i : 	uncomplete\n./so_long map.b\n\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG map.b | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i : 	uncomplete\n./so_long map.be\n\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG map.be | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i : 	too long\n./so_long map.berr\n\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG map.berr | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i : 	too short\n./so_long .ber\n\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG .ber | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i : 	with folder\n./so_long /.ber\n\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG /.ber | grep "ERROR SUMMARY"
 
 printf "${BLUE}\n\n\n#####		TEST Map		#####${NOCOLOR}"
 i=1
-printf "${YELLOW}\n\nTest nº$i :	no such file\n./so_long map.ber\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG map.ber | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i :	non square\n./so_long maps/non_square.ber\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG maps/non_square.ber | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i :	map non closed\n./so_long maps/non_closed.ber\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG maps/non_closed.ber | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i :	need 1 start\n./so_long maps/no_start.ber\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG maps/no_start.ber | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i :	need 1 exit\n./so_long maps/no_exit.ber\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG maps/no_exit.ber | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i :	need at least 1 collectibles\n./so_long maps/no_collectibles.ber\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG maps/no_collectibles.ber | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i :	no more than 1 start\n./so_long maps/two_start.ber\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG maps/two_start.ber | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i :	no more than 1 exit\n./so_long maps/two_exit.ber\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG maps/two_exit.ber | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i :	only 0, 1, C, E, P characters\n./so_long maps/extra_letter.ber\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG maps/extra_letter.ber | grep "leaks for"
+printf "${YELLOW}\n\nTest nº$i :	no such file\n./so_long map.ber\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG map.ber | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i :	non square\n./so_long maps/non_square.ber\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG maps/non_square.ber | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i :	map non closed\n./so_long maps/non_closed.ber\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG maps/non_closed.ber | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i :	need 1 start\n./so_long maps/no_start.ber\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG maps/no_start.ber | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i :	need 1 exit\n./so_long maps/no_exit.ber\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG maps/no_exit.ber | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i :	need at least 1 collectibles\n./so_long maps/no_collectibles.ber\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG maps/no_collectibles.ber | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i :	no more than 1 start\n./so_long maps/two_start.ber\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG maps/two_start.ber | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i :	no more than 1 exit\n./so_long maps/two_exit.ber\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG maps/two_exit.ber | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i :	only 0, 1, C, E, P characters\n./so_long maps/extra_letter.ber\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG maps/extra_letter.ber | grep "ERROR SUMMARY"
 
 printf "${BLUE}\n\n\n#####		TEST Finishable		#####${NOCOLOR}"
 i=1
-printf "${YELLOW}\n\nTest nº$i :	player stuck\n./so_long maps/unfinishable_basic_1.ber\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG maps/unfinishable_basic_1.ber | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i :	exit blocked\n./so_long maps/unfinishable_basic_2.ber\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG maps/unfinishable_basic_2.ber | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i :	collectible blocked\n./so_long maps/unfinishable_basic_3.ber\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG maps/unfinishable_basic_3.ber | grep "leaks for"
-printf "${YELLOW}\n\nTest nº$i :	wall split map in two\n./so_long maps/unfinishable_basic_4.ber\n${NOCOLOR}"; ((i=i+1)); leaks --atExit -- $DIR_PROG maps/unfinishable_basic_4.ber | grep "leaks for"
+printf "${YELLOW}\n\nTest nº$i :	player stuck\n./so_long maps/unfinishable_basic_1.ber\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG maps/unfinishable_basic_1.ber | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i :	exit blocked\n./so_long maps/unfinishable_basic_2.ber\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG maps/unfinishable_basic_2.ber | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i :	collectible blocked\n./so_long maps/unfinishable_basic_3.ber\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG maps/unfinishable_basic_3.ber | grep "ERROR SUMMARY"
+printf "${YELLOW}\n\nTest nº$i :	wall split map in two\n./so_long maps/unfinishable_basic_4.ber\n${NOCOLOR}"; ((i=i+1)); valgrind $DIR_PROG maps/unfinishable_basic_4.ber | grep "ERROR SUMMARY"
 
 #Cleaning after tests
 make fclean -C $DIR_PATH > /dev/null
