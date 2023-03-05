@@ -19,6 +19,7 @@ if test -f "$dir_path"Makefile; then
 		echo -e "${green}${bold}Compilation succeeded ✓${nc}"
 	else
 		echo -e "${red}${bold}⚠️ Compilation failed ⚠️${nc}"
+		exit 1
 	fi
 	echo 
 fi
