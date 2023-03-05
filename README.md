@@ -14,4 +14,4 @@ bash tester.sh
 ```  
 
 ## Result
-Basically, this tester will only show you `leaks` and your manage of `error messages`
+Basically, this tester will only show you potential `leaks` and your manage of `error messages`
