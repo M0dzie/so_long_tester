@@ -11,7 +11,6 @@ dir_path="../"
 dir_prog="${dir_path}./so_long"
 
 ## Make project ##
-
 if test -f "$dir_path"Makefile; then
     make -C "$dir_path"
 	echo 
@@ -26,17 +25,8 @@ fi
 
 ## Norm test ##
 printf "${blue}${bold}#####		TEST NORM		#####\n\n${nc}"
-norminette_success=true
-find . -name "*.c" -exec sh -c '
-    if test -f norminette; then
-        ./norminette -R CheckForbiddenSourceHeader "$1"
-        if [ $? -ne 0 ]; then
-            exit 1
-        fi  
-    fi
-' sh {} \; || norminette_success=false
-
-if [ $norminette_success = true ]; then
+norminette -R CheckForbiddenSourceHeader 1>/dev/null
+if [[ $? -eq 0 ]]; then
     echo -e "${green}${bold}Norm OK ✓${nc}"
 else
     echo -e "${red}${bold}⚠️ Norm KO ⚠️${nc}"
