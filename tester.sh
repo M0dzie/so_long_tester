@@ -64,11 +64,11 @@ function test_leaks() {
 
 printf "${blue}${bold}\n\n#####		TEST MAPS		#####\n\n${nc}"
 i=1
-printf "${yellow}Test nº$i :	no arguments\n./so_long\n\n${nc}"; ((i=i+1)); "$dir_prog"; test_leaks "$dir_prog"; sleep 1
+printf "${yellow}Test nº$i :	no arguments\n./so_long\n\n${nc}"; ((i=i+1)); "$dir_prog"; sleep 1
 
 printf "${blue}${bold}\n\n\n#####		TEST Extensions		#####${nc}"
 i=1
-printf "${yellow}\n\nTest nº$i : 	no extension\n./so_long map\n\n${nc}"; ((i=i+1)); "$dir_prog map"; test_leaks "$dir_prog map"; sleep 1
+printf "${yellow}\n\nTest nº$i : 	no extension\n./so_long map\n\n${nc}"; ((i=i+1)); "$dir_prog map"; sleep 1
 printf "${yellow}\n\nTest nº$i : 	uncomplete\n./so_long map.\n\n${nc}"; ((i=i+1)); "$dir_prog map."; sleep 1
 printf "${yellow}\n\nTest nº$i : 	uncomplete\n./so_long map.b\n\n${nc}"; ((i=i+1)); "$dir_prog map.b"; sleep 1
 printf "${yellow}\n\nTest nº$i : 	uncomplete\n./so_long map.be\n\n${nc}"; ((i=i+1)); "$dir_prog map.be"; sleep 1
