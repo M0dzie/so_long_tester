@@ -39,7 +39,7 @@ function test_leaks() {
 ## Check os for leaks ##
 	if [ "$os" == "Linux" ]; then
 		leak="valgrind --leak-check=full $program"
-		leak_check="ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)"
+		leak_check="no leaks are possible"
 	elif [ "$os" == "Darwin" ]; then
 		leak="leaks --atExit -- $program"
 		leak_check="Process [0-9]+: 0 leaks for 0 total leaked bytes."
