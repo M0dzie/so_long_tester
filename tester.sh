@@ -12,9 +12,9 @@ exec="./so_long"
 
 cd $dir_path 1>/dev/null
 ## Make project ##
-if test -f "$dir_path"Makefile; then
-    make -C "$dir_path"
-	echo 
+printf "${blue}${bold}\n#####		MAKE		#####\n\n${nc}"
+if test -f Makefile; then
+    make 1>/dev/null
 	if [[ $? -eq 0 ]]; then
 		echo -e "${green}${bold}Compilation succeeded ✓${nc}"
 	else
@@ -25,7 +25,7 @@ if test -f "$dir_path"Makefile; then
 fi
 
 ## Norm test ##
-printf "${blue}${bold}\n#####		TEST NORM		#####\n\n${nc}"
+printf "${blue}${bold}#####		TEST NORM		#####\n\n${nc}"
 norminette -R CheckForbiddenSourceHeader 1>/dev/null
 if [[ $? -eq 0 ]]; then
     echo -e "${green}${bold}Norm OK ✓${nc}"
@@ -95,5 +95,4 @@ printf "${yellow}\n\nTest nº$i :	collectible blocked\n./so_long maps/unfinishab
 printf "${yellow}\n\nTest nº$i :	wall split map in two\n./so_long maps/unfinishable_basic_4.ber\n${nc}"; ((i=i+1)); $exec maps/unfinishable_basic_4.ber; sleep 1
 
 ## Cleaning ##
-make fclean -C $dir_path
-cd - 1>/dev/null
+make fclean
